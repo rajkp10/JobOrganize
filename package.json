@@ -40,5 +40,9 @@
       "target": "AppImage"
     }
   },
-  "type": "module"
+  "type": "module",
+  "dependencies": {
+    "electron-store": "^10.0.0",
+    "electronmon": "^2.0.3"
+  }
 }

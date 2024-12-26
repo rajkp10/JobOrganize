@@ -4,7 +4,7 @@
   "description": "PC application to manage job applications",
   "main": "main.js",
   "scripts": {
-    "start": "electron .",
+    "start": "electronmon .",
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "electron-builder",
     "build-css": "sass sass/main.scss styles/main.css",

@@ -5,4 +5,5 @@ contextBridge.exposeInMainWorld("api", {
   getSelectedDirectories: () => ipcRenderer.invoke("get-selected-dir"),
   openDirectoryDialog: (command) =>
     ipcRenderer.invoke("dialog:openDirectory", command),
+  submitForm: (data) => ipcRenderer.invoke("submit-application-form", data),
 });

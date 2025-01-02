@@ -1,0 +1,66 @@
+@import "../themes/light-theme.scss";
+
+@mixin button-base($bg, $color) {
+  display: inline-block;
+  font-weight: 400;
+  text-align: center;
+  vertical-align: middle;
+  cursor: pointer;
+  background-color: $bg;
+  padding: 0.375rem 0.75rem;
+  font-size: 1rem;
+  border: none;
+  border-radius: 0.25rem;
+  outline: 1px solid $color;
+  color: $color;
+  text-decoration: none;
+  transition: background-color 0.15s ease-in-out, outline 0.15s ease-in-out,
+    color 0.15s ease-in-out;
+
+  &:hover {
+    background-color: darken($bg, 10%);
+    color: lighten($color, 10%);
+  }
+}
+
+.btn {
+  &-primary {
+    @include button-base($primary, $text);
+  }
+
+  &-secondary {
+    @include button-base($secondary, $text);
+  }
+
+  &-success {
+    @include button-base($success, $text);
+  }
+
+  &-danger {
+    @include button-base($error, $text);
+  }
+
+  &-outline-primary {
+    @include button-base(transparent, $primary);
+  }
+
+  &-outline-secondary {
+    @include button-base(transparent, $secondary);
+
+    &:hover {
+      background-color: darken($secondary, 10%);
+      color: lighten($text, 10%);
+      outline: none;
+    }
+  }
+
+  &-outline-danger {
+    @include button-base(transparent, $error);
+
+    &:hover {
+      background-color: darken($error, 10%);
+      color: lighten($text, 10%);
+      outline: none;
+    }
+  }
+}

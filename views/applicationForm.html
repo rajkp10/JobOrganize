@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JobOrganize</title>
+    <link rel="stylesheet" href="../styles/main.css" />
+  </head>
+  <body>
+    <main class="container">
+      <!-- Header section -->
+      <h1>Application Form</h1>
+
+      <form id="application-form">
+        <div id="input-container" class="card-medium">
+          <div class="input-control">
+            <label for="company-name">Company Name</label>
+            <input type="text" name="company-name" id="company-name" />
+          </div>
+
+          <div class="input-control">
+            <label for="job-role-name">Job Role</label>
+            <input type="text" name="job-role-name" id="job-role-name" />
+          </div>
+
+          <div class="input-control">
+            <label for="job-posting-url">Job Posting URL</label>
+            <input type="text" name="job-posting-url" id="job-posting-url" />
+          </div>
+
+          <div
+            id="recruiter-details-container"
+            class="flex flex-column"
+            style="display: none"
+          ></div>
+          <div
+            id="additional-details-container"
+            class="flex flex-column"
+            style="display: none"
+          ></div>
+          <div class="flex">
+            <button
+              id="add-new-recruiter"
+              type="button"
+              class="btn-outline-secondary"
+              style="flex: 1"
+            >
+              Add a Recruiter
+            </button>
+            <button
+              id="add-new-field"
+              type="button"
+              class="btn-outline-secondary"
+              style="flex: 1"
+            >
+              Add New Field
+            </button>
+          </div>
+          <button id="submit-btn" class="btn-success">Submit</button>
+          <button type="button" id="home" class="btn-outline-danger">
+            Cancel
+          </button>
+        </div>
+      </form>
+      <script src="../renderer/applicationForm.js"></script>
+    </main>
+  </body>
+</html>

@@ -7,22 +7,37 @@
     <link rel="stylesheet" href="../styles/main.css" />
   </head>
   <body>
-    <!-- Header section -->
-    <h1>Welcome to Select Directories Page</h1>
-    <button id="home">Go back to Home</button>
+    <main class="container">
+      <!-- Header section -->
+      <h1>Select Directories/Folders</h1>
+      <section class="card-small">
+        <!-- Select Input Resume Directory -->
+        <div class="flex flex-column">
+          <h1>Select Source Directory:</h1>
+          <button id="select-source" class="btn-secondary">
+            Select Source
+          </button>
+          <div class="flex justify-between">
+            <span>Selected:</span>
+            <span id="source-dir">No source directory selected</span>
+          </div>
+        </div>
 
-    <!-- Select Input Resume Directory -->
-    <label for="source-dir">Select Source Directory:</label>
-    <button id="select-source">Select Source</button>
-    <span id="source-dir">No source directory selected</span>
+        <!-- Select Ouput Job Description Directory -->
+        <div class="flex flex-column mt-1">
+          <h1>Select Destination Directory:</h1>
+          <button id="select-dest" class="btn-secondary">
+            Select Destination
+          </button>
+          <div class="flex justify-between">
+            <span>Selected:</span>
+            <span id="destination-dir">No destination directory selected</span>
+          </div>
+        </div>
+        <button id="home" class="btn-outline-danger mt-2">Cancel</button>
+      </section>
 
-    <br />
-
-    <!-- Select Ouput Job Description Directory -->
-    <label for="dest-dir">Select Destination Directory:</label>
-    <button id="select-dest">Select Destination</button>
-    <span id="destination-dir">No destination directory selected</span>
-
-    <script src="../renderer/selectDirectories.js"></script>
+      <script src="../renderer/selectDirectories.js"></script>
+    </main>
   </body>
 </html>

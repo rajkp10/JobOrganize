@@ -3,6 +3,12 @@ import path, { dirname } from "path";
 import fs from "fs";
 import Store from "electron-store";
 import { fileURLToPath } from "url";
+import { DESTINATION_DIRECTORY, SOURCE_DIRECTORY } from "./utils/constants.js";
+import {
+  copyResumeFiles,
+  saveJobDetails,
+  saveRecruiterDetails,
+} from "./utils/utils.js";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -13,7 +19,6 @@ const createWindow = () => {
   win = new BrowserWindow({
     width: 800,
     height: 600,
-    fullscreen: true,
     webPreferences: {
       nodeIntegration: false,
       contextIsolation: true,
@@ -52,11 +57,41 @@ ipcMain.handle("dialog:openDirectory", async (event, command) => {
 
 ipcMain.handle("get-selected-dir", () => {
   const data = {
-    inputDir: store.get("SourceDirectory") || "Not Selected.",
-    outputDir: store.get("DestinationDirectory") || "Not Selected.",
+    inputDir: store.get(SOURCE_DIRECTORY) || "Not Selected.",
+    outputDir: store.get(DESTINATION_DIRECTORY) || "Not Selected.",
   };
-
   return data;
+});
+
+ipcMain.handle("submit-application-form", async (event, data) => {
+  try {
+    const destinationDir = store.get(DESTINATION_DIRECTORY);
+    const sourceDir = store.get(SOURCE_DIRECTORY);
+
+    const { jobDetails, recruiterDetails } = data;
+    const { companyName, jobRole } = jobDetails;
+
+    let dirPath = path.join(destinationDir, companyName);
+    let subDirPath = path.join(dirPath, jobRole);
+
+    if (!fs.existsSync(dirPath)) {
+      await fs.promises.mkdir(dirPath);
+    }
+
+    if (fs.existsSync(subDirPath)) {
+      throw new Error("Application for this Job has already done");
+    } else {
+      await fs.promises.mkdir(subDirPath);
+    }
+
+    copyResumeFiles(sourceDir, subDirPath);
+    saveJobDetails(data, subDirPath);
+    saveRecruiterDetails(jobRole, recruiterDetails, dirPath);
+  } catch (error) {
+    console.error("Error: ", error);
+    return { success: false };
+  }
+  return { success: true };
 });
 
 app.whenReady().then(() => {

@@ -7,35 +7,62 @@
     <link rel="stylesheet" href="../styles/main.css" />
   </head>
   <body>
-    <!-- Header section -->
-    <h1>Welcome to Application Form Page</h1>
-    <button id="home">Go back to Home</button>
-    <br />
-    <form>
-      <div id="input-container">
-        <label for="company-name">Company Name</label>
-        <input type="text" name="company-name" id="company-name" />
-        <br />
+    <main class="container">
+      <!-- Header section -->
+      <h1>Application Form</h1>
 
-        <label for="job-role-name">Job Role</label>
-        <input type="text" name="job-role-name" id="job-role-name" />
-        <br />
+      <form id="application-form">
+        <div id="input-container" class="card-medium">
+          <div class="input-control">
+            <label for="company-name">Company Name</label>
+            <input type="text" name="company-name" id="company-name" />
+          </div>
 
-        <label for="job-posting-url">Job Posting URL</label>
-        <input type="text" name="job-posting-url" id="job-posting-url" />
-        <br />
+          <div class="input-control">
+            <label for="job-role-name">Job Role</label>
+            <input type="text" name="job-role-name" id="job-role-name" />
+          </div>
 
-        <label for="recruiter-name">Recruiter Name</label>
-        <input type="text" name="recruiter-name" id="recruiter-name" />
-        <br />
+          <div class="input-control">
+            <label for="job-posting-url">Job Posting URL</label>
+            <input type="text" name="job-posting-url" id="job-posting-url" />
+          </div>
 
-        <label for="recruiter-email">Recruiter Email</label>
-        <input type="text" name="recruiter-email" id="recruiter-email" />
-        <br />
-      </div>
-      <button id="add-new-field" type="button">Add New Field</button>
-      <button id="submit-btn">Submit</button>
-    </form>
-    <script src="../renderer/applicationForm.js"></script>
+          <div
+            id="recruiter-details-container"
+            class="flex flex-column"
+            style="display: none"
+          ></div>
+          <div
+            id="additional-details-container"
+            class="flex flex-column"
+            style="display: none"
+          ></div>
+          <div class="flex">
+            <button
+              id="add-new-recruiter"
+              type="button"
+              class="btn-outline-secondary"
+              style="flex: 1"
+            >
+              Add a Recruiter
+            </button>
+            <button
+              id="add-new-field"
+              type="button"
+              class="btn-outline-secondary"
+              style="flex: 1"
+            >
+              Add New Field
+            </button>
+          </div>
+          <button id="submit-btn" class="btn-success">Submit</button>
+          <button type="button" id="home" class="btn-outline-danger">
+            Cancel
+          </button>
+        </div>
+      </form>
+      <script src="../renderer/applicationForm.js"></script>
+    </main>
   </body>
 </html>

@@ -16,10 +16,18 @@ const copyResumeFiles = async (sourceDir, destinationDir) => {
 const saveJobDetails = async (data, subDirPath) => {
   const filePath = path.join(subDirPath, JOB_DETAILS_FILE);
   let fileContent = "";
+  const { jobDetails, recruiterDetails, additionalDetails } = data;
 
-  for (const [key, value] of Object.entries(data)) {
-    fileContent += addDetail(key, value);
+  fileContent += addDetail("Job Details", jobDetails);
+  // for (const key in recruiterDetails) {
+  //   const recruiter = recruiterDetails[key];
+  //   fileContent += addDetail(key.split("-")[0], recruiter);
+  // }
+  for (let i = 1; i <= recruiterDetails.length; i++) {
+    const recruiter = recruiterDetails[i - 1];
+    fileContent += addDetail(`Recruiter-${i}`, recruiter);
   }
+  fileContent += addDetail("Additinal Details", additionalDetails);
 
   await fs.promises.writeFile(filePath, fileContent);
 };
@@ -43,14 +51,17 @@ const saveRecruiterDetails = async (
   const filePath = path.join(destinationDir, RECRUITER_DETAIL_FILE);
 
   if (!fs.existsSync(filePath)) {
-    const header = "Recruiter Name,Recruiter Email,Job Role\n";
+    const header = "Recruiter Name,Recruiter Linkedin,Job Role\n";
     await fs.promises.writeFile(filePath, header, "utf8");
   }
 
-  const { recruiterName, recruiterEmail } = recruiterDetails;
-  const newEntry = `${recruiterName},${recruiterEmail},${jobRole}\n`;
+  console.log(recruiterDetails);
 
-  await fs.promises.appendFile(filePath, newEntry, "utf8");
+  recruiterDetails.forEach(async (recruiter) => {
+    const { Name, Linkedin } = recruiter;
+    const newEntry = `${Name},${Linkedin},${jobRole}\n`;
+    await fs.promises.appendFile(filePath, newEntry, "utf8");
+  });
 };
 
 export { copyResumeFiles, saveJobDetails, saveRecruiterDetails };

@@ -158,7 +158,7 @@ document.getElementById("submit-btn").addEventListener("click", async (e) => {
   const { success } = await window.api.submitForm(data);
   console.log(success);
 
-  // if (success) {
-  //   window.api.navigate("home.html");
-  // }
+  if (success) {
+    window.api.navigate("home.html");
+  }
 });

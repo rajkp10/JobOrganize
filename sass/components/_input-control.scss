@@ -1,0 +1,44 @@
+@import "../themes/light-theme.scss";
+
+@mixin input-control-base($color) {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  gap: 1rem;
+
+  label {
+    flex: 1;
+    color: $neutral;
+    padding: 0.2rem 0.5rem;
+  }
+
+  input {
+    flex: 1;
+    outline: 1px solid lighten($color, 30%);
+    border: none;
+    border-radius: 0.2rem;
+    font-size: 1rem;
+    padding: 0.2rem 0.5rem;
+    color: lighten($neutral, 20%);
+
+    &:focus {
+      outline: 1.5px solid $color;
+    }
+  }
+}
+
+.input-control {
+  @include input-control-base($primary);
+
+  &-danger {
+    @include input-control-base($error);
+
+    input {
+      outline: 1.5px solid $error;
+
+      &:focus {
+        outline: 1.5px solid $primary;
+      }
+    }
+  }
+}

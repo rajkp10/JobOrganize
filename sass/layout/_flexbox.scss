@@ -5,9 +5,16 @@
 
 .flex-column {
   flex-direction: column;
-  gap: 1rem;
+}
+
+.justify-center {
+  justify-content: center;
 }
 
 .justify-between {
   justify-content: space-between;
+}
+
+.align-center {
+  align-items: center;
 }

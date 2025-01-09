@@ -3,7 +3,7 @@
 @mixin card-base($width) {
   display: flex;
   flex-direction: column;
-  width: $width;
+  width: min(100%, $width);
   padding: 2rem;
   gap: 1rem;
   overflow-wrap: break-word;

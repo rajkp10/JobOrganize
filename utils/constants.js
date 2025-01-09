@@ -1,4 +1,15 @@
 export const DESTINATION_DIRECTORY = "DestinationDirectory";
 export const SOURCE_DIRECTORY = "SourceDirectory";
+export const COMPANY_DIRECTORY = "CompanyDirectory";
+export const APPLIED_JOB_DIRECTORY = "AppliedJobDirectory";
 export const RECRUITER_DETAIL_FILE = "recruiterDetails.csv";
 export const JOB_DETAILS_FILE = "jobDetails.txt";
+export const APPLICATION_STATUS_APPLIED = "Applied";
+export const APPLICATION_STATUS_NOT_SELECTED = "Not Selected";
+export const APPLICATION_STATUS_REJECTED = "Rejected";
+export const TYPE_COMPANY = "COMPANY";
+export const TYPE_JOB = "JOB";
+export const NOT_ALLOWED_CHARACTERS = /[<>:"/\\|?*\x00-\x1F]/g;
+export const PRIORITY_HIGH = "High";
+export const PRIORITY_MODERATE = "Moderate";
+export const PRIORITY_LOW = "Low";

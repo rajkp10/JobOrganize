@@ -6,7 +6,7 @@
   "scripts": {
     "start": "electronmon .",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "electron-builder",
+    "build": "electron-builder --mac",
     "build-css": "sass sass/main.scss styles/main.css",
     "watch-css": "sass --watch sass:styles"
   },
@@ -19,26 +19,28 @@
   },
   "build": {
     "appId": "com.mycompany.my-electron-app",
-    "productName": "My Electron App",
+    "productName": "JobOrganize",
     "files": [
       "styles/**/*",
       "preload/*",
       "renderer/*",
       "views/*",
+      "utils/*",
       "main.js"
     ],
     "directories": {
       "output": "build"
     },
     "mac": {
-      "category": "public.app-category.utilities"
+      "target": "dmg"
     },
     "win": {
       "target": "nsis"
     },
     "linux": {
       "target": "AppImage"
-    }
+    },
+    "artifactName": "${productName}-${version}-setup.${ext}"
   },
   "type": "module",
   "dependencies": {

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JobOrganize</title>
+    <link rel="stylesheet" href="../styles/main.css" />
+  </head>
+  <body>
+    <main class="container">
+      <h1>Job Details</h1>
+      <form id="application-form" class="card-medium">
+        <!-- <div id="input-container"> -->
+        <div class="flex justify-between">
+          <button
+            type="button"
+            id="job-list"
+            class="btn-outline-danger"
+            style="align-self: flex-start"
+          >
+            Back
+          </button>
+          <button
+            type="button"
+            id="edit-btn"
+            class="btn-secondary"
+            style="align-self: flex-end"
+          >
+            Edit
+          </button>
+        </div>
+
+        <div
+          id="job-details-container"
+          class="flex flex-column"
+          style="display: none"
+        ></div>
+        <div
+          id="recruiter-details-container"
+          class="flex flex-column"
+          style="display: none"
+        ></div>
+        <div
+          id="additional-details-container"
+          class="flex flex-column"
+          style="display: none"
+        ></div>
+        <div class="flex">
+          <button
+            id="form-add-new-recruiter"
+            type="button"
+            class="btn-outline-secondary"
+            style="flex: 1; display: none"
+          >
+            Add a Recruiter
+          </button>
+          <button
+            id="form-add-new-field"
+            type="button"
+            class="btn-outline-secondary"
+            style="flex: 1; display: none"
+          >
+            Add New Field
+          </button>
+        </div>
+        <button id="form-submit-btn" class="btn-success" style="display: none">
+          Submit
+        </button>
+        <label for="resume">Resume:</label>
+        <object
+          id="resume"
+          data="file:\\C:\Users\patel\Desktop\Co-Op\Resume\Raj_Patel_Resume.pdf"
+          style="height: 860px"
+        ></object>
+        <!-- </div> -->
+      </form>
+    </main>
+    <aside
+      id="job-description-modal"
+      class="modal flex flex-column align-center"
+      style="display: none"
+    >
+      <button
+        type="button"
+        id="close-modal"
+        class="btn-danger"
+        style="align-self: flex-end"
+      >
+        Close
+      </button>
+      <h2>Job Description</h2>
+      <pre
+        id="job-description-view"
+        style="text-wrap: wrap; overflow-y: scroll"
+      ></pre>
+    </aside>
+    <script type="module" src="../renderer/jobDetails.js"></script>
+    <script type="module" src="../renderer/addFormFields.js"></script>
+    <script type="module" src="../utils/shared.js"></script>
+  </body>
+</html>

@@ -6,7 +6,7 @@
   "scripts": {
     "start": "electronmon .",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "electron-builder --mac",
+    "build": "electron-builder",
     "build-css": "sass sass/main.scss styles/main.css",
     "watch-css": "sass --watch sass:styles"
   },
@@ -18,7 +18,7 @@
     "sass": "^1.83.0"
   },
   "build": {
-    "appId": "com.mycompany.my-electron-app",
+    "appId": "com.project.joborganize",
     "productName": "JobOrganize",
     "files": [
       "styles/**/*",
@@ -32,13 +32,16 @@
       "output": "build"
     },
     "mac": {
-      "target": "dmg"
+      "target": "dmg",
+      "icon": "assets/mac-icon/JobOrganize-Logo-Mac-512x512.icns"
     },
     "win": {
-      "target": "nsis"
+      "target": "nsis",
+      "icon": "assets/win-icon/JobOrganize-Logo-Windows-256x256.ico"
     },
     "linux": {
-      "target": "AppImage"
+      "target": "AppImage",
+      "icon": "assets/linux-icon/"
     },
     "artifactName": "${productName}-${version}-setup.${ext}"
   },

@@ -24,6 +24,8 @@ import {
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
+const iconPath = __dirname + "\\assets\\JobOrganize-Logo.png";
+
 const store = new Store();
 let win;
 
@@ -37,10 +39,10 @@ const createWindow = () => {
       preload: path.join(__dirname, "/preload/preload.js"),
       webviewTag: true,
     },
+    icon: iconPath,
   });
 
   win.loadFile(path.join(__dirname, "/views/home.html"));
-  // win.webContents.openDevTools();
 
   win.on("closed", () => {
     win = null;
